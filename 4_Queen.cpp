@@ -24,14 +24,11 @@ void Print(){
 void area(int row, int t, int inisial, int mrow){
 	int i;
 	board[row][t] = mrow;
-	for(i = row; i <= N; i++){
-		//diagonal left
+	for(i = row; i <= N; i++)
 		if(t-(i-row) > 0){
 			if(board[i][t-(i-row)] == inisial) board[i][t-(i-row)] = mrow;
 		}
-		//every column
 		if(board[i][t] == inisial) board[i][t] = mrow;
-		//diagonal right
 		if(t+(i-row) < N+2){
 			if(board[i][t+(i-row)] == inisial) board[i][t+(i-row)] = mrow;
 		}
@@ -39,19 +36,18 @@ void area(int row, int t, int inisial, int mrow){
 }
 
 void Solve(int row){
-	int i, j, k;
 	if(row == N+1){
 		Print();
 		cin.get();
 		return;
 	}
-	for(i = 1; i <= N; i++){
+	for(int i = 1; i <= N; i++){
 		if(board[row][i] == 0){
 			area(row, i, 0, row);
 			bool place = false;
-			for(j = row + 1; j <= N; j++){
+			for(int j = row + 1; j <= N; j++){
 				place = true;
-				for(k = 1; k <= N; k++){
+				for(int k = 1; k <= N; k++){
 					if(board[j][k]==0){
 						place = false;
 					}
